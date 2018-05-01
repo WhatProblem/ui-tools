@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .circleTest {
+    width: 300px;
+    height: 300px;
+    /*background: conic-gradient(#9ED110, #50B517, #179067, #476EAF, #9f49ac, #CC42A2, #FF3BA7, #FF5800, #FF8100, #FEAC00, #FFCC00, #EDE604);*/
+    -webkit-background: conic-gradient(deeppink 0, deeppink 30%, yellowgreen 30%, yellowgreen 70%, teal 70%, teal 100%);
+    background: conic-gradient(deeppink 30%, yellowgreen 70%,  teal 100%);
+    border-radius: 50%;
+    -webkit-mask: radial-gradient(transparent 110px, #000 110px);
+  }
+  </style>
+</head>
+<body>
+  <div class="circleTest"></div>
+</body>
+<script src="lib/prefixfree.min.js"></script>
+<script src="lib/conic-gradient.js"></script>
+</html>
