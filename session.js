@@ -14,7 +14,7 @@ export const session = {
     if (!json.hasOwnProperty(key)) {
       const valueStr = sessionStorage.getItem(key) || localStorage.getItem(key);
       if (valueStr) {
-        json[key] = JSON.stringify(valueStr);
+        json[key] = JSON.parse(valueStr);
       }
     }
     return json[key];
