@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+    #curveSvg {
+      background: #d0d0d0;
+    }
+  </style>
+</head>
+<body>
+  <svg id="curveSvg">
+    <defs>
+      <!-- <marker id="myArrow" markerWidth="10" markerHeight="10" refx="0" refy="2" orient="auto" markerUnits="strokeWidth"> -->
+      <marker id="myArrow" refx="0" refy="2" orient="auto" markerUnits="strokeWidth">
+        <!-- <path d="M 0,0 L0,4 L8,2 L0,0" style="fill: red" /> -->
+      </marker>
+    </defs>
+  </svg>
+</body>
+<script src="./curve.js"></script>
+</html>
