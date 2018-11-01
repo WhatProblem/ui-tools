@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./rem.js"></script>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #wraper {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    #container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: rgb(229, 243, 195);
+      top: 0;
+      left: 0;
+    }
+
+    .content {
+      width: 20rem;
+      height: 12rem;
+      position: absolute;
+      text-align: center;
+      line-height: 12rem;
+      border: 1px solid #000;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="wraper">
+    <div id="container">
+      <div class="content">
+        <a href=" " onclick="navivate(e)">内容1</a>
+      </div>
+      <div class="content">内容2</div>
+      <div class="content">内容3</div>
+      <div class="content">内容4</div>
+      <div class="content">内容5</div>
+      <div class="content">内容6</div>
+      <div class="content">内容7</div>
+      <div class="content">内容8</div>
+    </div>
+  </div>
+</body>
+<script src="./mySwiper.js"></script>
+<script>
+  function navivate(e) {
+    console.log(1231243);
+  }
+</script>
+
+</html>
