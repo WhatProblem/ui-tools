@@ -2,7 +2,9 @@ function Curve(options) {
   this.el = document.querySelector(options.el);
   this.el.setAttribute('width', options.option.elWidth);
   this.el.setAttribute('height', options.option.elHeight);
-  this.elArrow = document.querySelector(options.elArrow);
+  this.elArrowOne = document.querySelector(options.elArrowOne);
+  this.elArrowTwo = document.querySelector(options.elArrowTwo);
+  this.elArrowThree = document.querySelector(options.elArrowThree);
   this.option = options.option;
 
   this.drawBg();
@@ -60,14 +62,32 @@ Curve.prototype.drawLineAlias = function () {
 }
 // 箭头绘制
 Curve.prototype.drawArrow = function () {
-  this.elArrow.setAttribute('markerWidth', `${this.option.arrowWid}`);
-  this.elArrow.setAttribute('markerHeight', `${this.option.arrowHei}`);
-  // this.elArrow.setAttribute('style', `refx:0;refy:2;`);
+  this.elArrowOne.setAttribute('markerWidth', `${this.option.arrowWid}`);
+  this.elArrowOne.setAttribute('markerHeight', `${this.option.arrowHei}`);
+  // this.elArrowOne.setAttribute('style', `refx:0;refy:2;`);
 
   let path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
   path.setAttribute('d', `M 0,0 L0,${this.option.arrowWidth} L${this.option.arrowHeight},${this.option.arrowWidth / 2} L0,0`);
-  path.setAttribute('style', `fill:${this.option.arrowColor}`);
-  this.elArrow.appendChild(path);
+  path.setAttribute('style', `fill:${this.option.arrowColorOne}`);
+  this.elArrowOne.appendChild(path);
+
+  this.elArrowTwo.setAttribute('markerWidth', `${this.option.arrowWid}`);
+  this.elArrowTwo.setAttribute('markerHeight', `${this.option.arrowHei}`);
+  // this.elArrowTwo.setAttribute('style', `refx:0;refy:2;`);
+
+  let pathTwo = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  pathTwo.setAttribute('d', `M 0,0 L0,${this.option.arrowWidth} L${this.option.arrowHeight},${this.option.arrowWidth / 2} L0,0`);
+  pathTwo.setAttribute('style', `fill:${this.option.arrowColorTwo}`);
+  this.elArrowTwo.appendChild(pathTwo);
+
+  this.elArrowThree.setAttribute('markerWidth', `${this.option.arrowWid}`);
+  this.elArrowThree.setAttribute('markerHeight', `${this.option.arrowHei}`);
+  // this.elArrowThree.setAttribute('style', `refx:0;refy:2;`);
+
+  let pathThree = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  pathThree.setAttribute('d', `M 0,0 L0,${this.option.arrowWidth} L${this.option.arrowHeight},${this.option.arrowWidth / 2} L0,0`);
+  pathThree.setAttribute('style', `fill:${this.option.arrowColorThree}`);
+  this.elArrowThree.appendChild(pathThree);
 }
 // 绘制曲线
 Curve.prototype.drawLine = function () {
@@ -121,7 +141,7 @@ Curve.prototype.drawLine = function () {
 
         let path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         path.setAttribute('d', `M${startPoint} ${curvePath}`);
-        path.setAttribute('style', `stroke:${this.option.basicData[i]['lineColor']};stroke-width:${this.option.basicData[i]['lineWidth']};fill:none;marker-end:url(#myArrow)`);
+        path.setAttribute('style', `stroke:${this.option.basicData[i]['lineColor']};stroke-width:${this.option.basicData[i]['lineWidth']};fill:none;marker-end:url(${this.option.basicData[i]['idArrow']})`);
         this.el.appendChild(path);
 
         // 右边留白方块
@@ -178,7 +198,9 @@ let wid = document.documentElement.clientWidth;
 let elWid = wid;
 new Curve({
   el: '#curveSvg', // svg元素
-  elArrow: '#myArrow', // 自定义箭头元素
+  elArrowOne: '#myArrowOne', // 自定义箭头元素
+  elArrowTwo: '#myArrowTwo', // 自定义箭头元素
+  elArrowThree:'#myArrowThree', // 自定义箭头元素
   option: {
     elWidth: elWid, // svg元素宽
     elHeight: elWid * 0.8, // svg元素高
@@ -193,7 +215,9 @@ new Curve({
     arrowHei: 10, // 曲线箭头高--可视区域
     arrowWidth: 4, // 曲线箭头宽度
     arrowHeight: 8, // 曲线箭头高度
-    arrowColor: 'red', // 曲线箭头颜色
+    arrowColorOne: 'red', // 曲线箭头颜色
+    arrowColorTwo: 'black', // 曲线箭头颜色
+    arrowColorThree: 'green', // 曲线箭头颜色
     textColor: '#000', // 文字颜色
     textSize: 14, // 文字大小
     oText: '0', // 文字“0”
@@ -216,18 +240,21 @@ new Curve({
     },
     basicData: [ // 坐标数据
       {
+        idArrow: '#myArrowOne',
         title: '正常值',
         lineColor: 'purple',
         lineWidth: 4,
         valueData: [[0, 0], [20, 3], [50, 10], [80, 25], [120, 40], [200, 156]]
       },
       {
+        idArrow: '#myArrowTwo',
         title: '比较值',
         lineColor: 'orange',
         lineWidth: 4,
         valueData: [[0, 0], [20, 2], [50, 20], [200, 180]]
       },
       {
+        idArrow: '#myArrowThree',
         title: '测试值',
         lineColor: 'darkblue',
         lineWidth: 4,
