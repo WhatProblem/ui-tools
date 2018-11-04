@@ -218,7 +218,7 @@ new Curve({
     arrowColorOne: 'red', // 曲线箭头颜色
     arrowColorTwo: 'black', // 曲线箭头颜色
     arrowColorThree: 'green', // 曲线箭头颜色
-    textColor: '#000', // 文字颜色
+    textColor: 'red', // 文字颜色
     textSize: 14, // 文字大小
     oText: '0', // 文字“0”
     xText: '100岁', // x-坐标文字

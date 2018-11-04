@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <script src="js/newRem.js"></script> -->
+    <title>Document</title>
+    <script src="./js/rem.js"></script>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-top: 5rem;">
+        <svg id="curveSvg">
+            <defs>
+                <!-- <marker id="myArrow" markerWidth="10" markerHeight="10" refx="0" refy="2" orient="auto" markerUnits="strokeWidth"> -->
+                <marker id="myArrowOne" refx="0" refy="2" orient="auto" markerUnits="strokeWidth">
+                    <!-- <path d="M 0,0 L0,4 L8,2 L0,0" style="fill: red" /> -->
+                </marker>
+                <marker id="myArrowTwo" refx="0" refy="2" orient="auto" markerUnits="strokeWidth">
+                    <!-- <path d="M 0,0 L0,4 L8,2 L0,0" style="fill: red" /> -->
+                </marker>
+                <marker id="myArrowThree" refx="0" refy="2" orient="auto" markerUnits="strokeWidth">
+                    <!-- <path d="M 0,0 L0,4 L8,2 L0,0" style="fill: red" /> -->
+                </marker>
+            </defs>
+        </svg>
+    </div>
+</body>
+<!-- <script src="./curve.js"></script> -->
+<script src="./js/curve.js"></script>
+<script>
+    var wid = document.documentElement.clientWidth;
+    var elWid = wid;
+    new Curve({
+        el: '#curveSvg', // svg元素
+        elArrowOne: '#myArrowOne', // 自定义箭头元素
+        elArrowTwo: '#myArrowTwo', // 自定义箭头元素
+        elArrowThree: '#myArrowThree', // 自定义箭头元素
+        option: {
+            elWidth: elWid, // svg元素宽
+            elHeight: elWid * 0.45, // svg元素高
+            textSpace: 40, // 边框与坐标轴之间的距离
+            xColor: '#929292', // x-坐标轴的颜色
+            xWid: 2, // x-轴的宽度
+            xaliasLong: 10, // 箭头长度
+            xaliasWid: 5, // 箭头宽度的一半 
+            yColor: '#929292', // y-轴的颜色
+            yWid: 2, // y轴的宽度
+            arrowWid: 10, // 曲线箭头宽--可视区域
+            arrowHei: 10, // 曲线箭头高--可视区域
+            arrowWidth: 0, // 曲线箭头宽度
+            arrowHeight: 0, // 曲线箭头高度
+            arrowColorOne: 'red', // 曲线箭头颜色
+            arrowColorTwo: 'black', // 曲线箭头颜色
+            arrowColorThree: 'green', // 曲线箭头颜色
+            textColor: '#000', // 文字颜色
+            textSize: 14, // 文字大小
+            oText: '0', // 文字“0”
+            xText: '100岁', // x-坐标文字
+            yText: '100%', // y-坐标文字
+            xTextDis: elWid * 0.4, // x-方向文字位置（范围0---elWidth）
+            yTextDis: elWid * 0.8 * 0.1, // y-方向文字位置（0---elHeight）
+            wordDeparture: elWid * 0.55, // 右边文字留白宽度
+            wordY: elWid * 0.4 * 0.2, // 留白文字距离顶端距离
+            rectSize: 15, // 提示矩形的宽高
+            rectDis: 5, // 方块间距
+            rectWordSize: '2rem', // 矩形旁边文字大小
+            scaleMark: { // 刻度线背景配置
+                scaleNum: 5, // 刻度线数量
+                scaleWid: elWid * 0.8 * 0.35, // 刻度背景宽度
+                scaleHei: elWid * 0.6 * 0.45, // 刻度背景高度
+                scaleColor: '#f0f0f0', // 刻度背景颜色
+                scaleLineColor: '#fff', // 刻度线条颜色
+                scaleLineWid: 2 // 刻度线条宽度
+            },
+            basicData: [// 坐标数据
+                {
+                    idArrow: '#myArrowOne',
+                    title: '您的发病风险',
+                    lineColor: 'purple',
+                    lineWidth: 4,
+                    valueData: [[0, 0], [20, 3], [50, 10]]// 线的长短和最大值位置有关,此处传三个数据就可以
+                }, {
+                    idArrow: '#myArrowTwo',
+                    title: '常人的发病风险',
+                    lineColor: 'orange',
+                    lineWidth: 4,
+                    valueData: [[0, 0], [20, 2], [50, 20]]
+                }, {
+                    idArrow: '#myArrowThree',
+                    title: '您的先天加后天发病风险',
+                    lineColor: 'darkblue',
+                    lineWidth: 4,
+                    valueData: [[0, 0], [20, 10], [50, 35]]
+                }]
+        }
+    });
+</script>
+
+</html>
