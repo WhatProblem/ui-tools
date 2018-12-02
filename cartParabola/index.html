@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 400px;
+            height: 600px;
+            position: relative;
+            background: rgba(150, 253, 210, 0.5);
+        }
+
+        .shopcart {
+            width: 40px;
+            height: 40px;
+            background: #f0a;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        #point {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #666;
+            position: fixed;
+            display: none;
+            z-index: 999;
+        }
+    </style>
+    <title>抛物线动画</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="point"></div>
+        <div class="shopcart">购物车</div>
+    </div>
+</body>
+<script>
+    function Parabola(option) {
+        this.option = option;
+        this.el = document.querySelector(option.el);
+        this.point = document.querySelector(option.point);
+
+        this.curClickX = 0;
+        this.curClickY = 0;
+        this.timerX = null;
+        this.p = 0;
+
+        this.clickEve();
+    }
+
+    Parabola.prototype.clickEve = function () {
+        this.el.addEventListener('click', (e) => {
+            this.curClickX = e.pageX;
+            this.curClickY = e.pageY;
+            this.p = (600 - this.curClickY) * (600 - this.curClickY) / (this.option.curvity * this.curClickX);
+
+            this.initPoint(this.curClickX, this.curClickY);
+        });
+    }
+
+    Parabola.prototype.initPoint = function (clickX, clickY) {
+        this.point.style.left = clickX + 'px';
+        this.point.style.top = clickY + 'px';
+        this.point.style.display = 'block';
+
+        this.animate(clickX, clickY);
+    }
+
+    Parabola.prototype.animate = function (startX, startY) {
+        let curX = startX;
+        let curY = startY;
+        this.timerX = setInterval(() => {
+            curX -= 5;
+            curY = 600 - Math.sqrt(this.option.curvity * this.p * curX);
+
+            if (curX <= 0 || curY >= 560) {
+                console.log(12131323)
+                this.timerX = null;
+                this.point.style.display='none';
+                return;
+            }
+
+            this.point.style.left = curX + 'px';
+            this.point.style.top = curY + 'px';
+        }, 30);
+
+    }
+
+    new Parabola({
+        el: '#container',
+        point: '#point',
+        curvity: 4, // 抛物线曲率
+        endPoint: { // 购物车坐标
+            left: 40,
+            top: 560
+        },
+
+    });
+</script>
+
+</html>
