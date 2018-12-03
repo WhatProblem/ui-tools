@@ -12,3 +12,4 @@
 [[doArrSort]](https://github.com/WhatProblem/toolsChunk/tree/master/doArrSort)  --数组中重复数据提取快捷方法（简单算法）<br/>
 [[floorTabs]](https://github.com/WhatProblem/toolsChunk/tree/master/floorTabs)  --类似美团/饿了吗楼层导航<br/>
 [[mySlider]](https://github.com/WhatProblem/toolsChunk/tree/master/mySlider)    --移动端卡片滑动效果（带有动画）<br/>
+[[parabola]](https://github.com/WhatProblem/toolsChunk/tree/master/cartParabola)    --购物车抛物线效果（带有动画）<br/>

@@ -86,8 +86,7 @@
             curY = 600 - Math.sqrt(this.option.curvity * this.p * curX);
 
             if (curX <= 0 || curY >= 560) {
-                console.log(12131323)
-                this.timerX = null;
+                clearInterval(this.timerX);
                 this.point.style.display='none';
                 return;
             }
