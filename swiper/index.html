@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        .banner {
+            overflow: hidden;
+            width: 100%;
+            height: 300px
+        }
+
+        .banner .img-wrap {
+            position: relative;
+            height: 100%
+        }
+
+        .banner img {
+            display: block;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="img-wrap" id="imgWrap">
+            <img class="sliderItem" src="./img/3.jpg" data-index="-1">
+            <img class="sliderItem" src="./img/1.jpg" data-index="0">
+            <img class="sliderItem" src="./img/2.jpg" data-index="1">
+            <img class="sliderItem" src="./img/3.jpg" data-index="2">
+            <img class="sliderItem" src="./img/1.jpg" data-index="3">
+        </div>
+    </div>
+</body>
+<script>
+    function Banner(options) {
+        this.options = options;
+        this.lastPx = 0;
+        this.startX = 0;
+        this.endX = 0;
+        this.t1 = 0;
+        this.t2 = 0;
+        this.moveX = 0;
+        this.timer = null;
+        this.imgSize = this.options.childs.length - 2;
+
+        this.initStyle();
+        this.options.el.addEventListener('touchstart', this.slider.bind(this), false);
+        this.options.el.addEventListener('touchmove', this.slider.bind(this), false);
+        this.options.el.addEventListener('touchend', this.slider.bind(this), false);
+        this.options.el.addEventListener('touchcancel', this.slider.bind(this), false);
+    }
+
+    Banner.prototype.initStyle = function () {
+        // console.log(this.options)
+        this.options.childs.forEach((childNode, i) => {
+            childNode.style.left = (i - 1) * this.options.width + 'px';
+        });
+    }
+
+    Banner.prototype.toMove = function (idx) {
+        let dis = -(idx * this.options.width);
+        this.options.el.style.transform = `translate3d(${dis}px,0,0)`;
+        this.options.el.style.transition = `transform 0.2s ease-out`;
+        this.moveX = dis;
+
+        this.timer = setTimeout(() => {
+            if (idx === this.imgSize) {
+                this.options.el.style.transform = `translate3d(0,0,0)`;
+                this.options.el.style.transition = 'none';
+                this.moveX = 0;
+            }
+            if (idx === -1) {
+                this.options.el.style.transform = `translate3d(${this.options.width * (1 - this.imgSize)}px,0,0)`;
+                this.options.el.style.transition = 'none';
+                this.moveX = -this.options.width * (this.imgSize - 1);
+            }
+        }, 200);
+    }
+
+    Banner.prototype.slider = function (e) {
+        // console.log(this.options);
+        // console.log(e);
+        let touch = e.targetTouches[0];
+        let target = e.target;
+        let index = parseInt(target.getAttribute('data-index'));
+        // let index = target.getAttribute('data-index');
+
+        if (e.type === 'touchstart') {
+            e.preventDefault();
+            this.lastPx = touch.pageX;
+            this.startX = this.lastPx;
+            this.endX = this.startX;
+            this.t1 = new Date().getTime();
+        }
+
+        if (e.type === 'touchmove') {
+            e.preventDefault();
+            let dis = parseInt(touch.pageX - this.lastPx);
+            this.endX = touch.pageX;
+            this.moveX += dis;
+            this.options.el.style.webkitTransform = `translate3d(${this.moveX}px,0,0)`;
+            this.options.el.style.transition = 'none';
+            this.lastPx = touch.pageX;
+        }
+
+        if (e.type === 'touchend') {
+            e.returnValue = true;
+            let mindis = this.endX - this.startX;
+            this.t2 = new Date().getTime() - this.t1;
+            if (Math.abs(mindis) > 0) {
+                if (Math.abs(mindis) < this.options.width * 0.4 && this.t2 > 500) {
+                    console.log(index)
+                    this.toMove(index);
+                } else {
+                    console.log(mindis);
+                    if (Math.abs(mindis) < 20) {
+                        console.log('距离短' + mindis);
+                        this.toMove(index);
+                        return;
+                    }
+                    if (mindis < 0) {
+                        this.toMove(index + 1);
+                    } else {
+                        console.log(index)
+                        this.toMove(index - 1);
+                    }
+                }
+            }
+        }
+    };
+
+    new Banner({
+        el: document.getElementById('imgWrap'),
+        childs: document.querySelectorAll('.sliderItem'),
+        times: 2000,
+        width: window.innerWidth || document.body.clientWidth
+    });
+</script>
+
+</html>
