@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .canvas {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        #canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            -webkit-transform: all 6s ease;
+            transform: all 6s ease;
+            transition: all 6s ease;
+        }
+
+        .btn {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            z-index: 999;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+            display: block;
+            border-radius: 30px;
+        }
+
+        .btn::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            position: absolute;
+            left: 15px;
+            top: -6px;
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="canvas">
+        <canvas id="canvas" width="400px" height="400px"></canvas>
+        <a class="btn">点击</a>
+    </div>
+</body>
+<script src="./1.js"></script>
+
+</html>
