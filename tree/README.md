@@ -27,7 +27,7 @@ event.cancelBubble = true // IE阻止冒泡
 
     效果如下：
 -前端<br>
-    javascript<br>
+    -javascript<br>
         ES6进阶<br>
         React框架<br>
         Vue框架<br>
