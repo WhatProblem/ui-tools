@@ -2,7 +2,7 @@
 分别使用原型模式与ES6 class分别实现的无限点击上一天下一天的js小插件，可直接使用
 -----
 	1.原型模式proto.js可直接通过script方式引入
-	```
+```
 	// 传入对应的时间格式控制-可选默认当前格式
 	// 限制下一天不可选--默认false可选
 	var date = new DoDate({
@@ -23,7 +23,8 @@ function nextDay() {
     date.nextDay()
     myDate.innerHTML = date.date
 }
-	```
+```
+	
 	2.ES6的class方式可以在需要使用的文件中对应引入
 	```
 // 将对应文件引用
