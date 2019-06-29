@@ -26,18 +26,18 @@ event.cancelBubble = true // IE阻止冒泡
 ```
 
     效果如下：
--前端<br>
-    -javascript<br>
+- 前端<br>
+    - javascript<br>
         ES6进阶<br>
         React框架<br>
         Vue框架<br>
         Angular框架<br>
-    -HTML<br>
+    - HTML<br>
         H5新特性<br>
-    -CSS<br>
+    - CSS<br>
         CSS3新特性<br>
         animate.css框架<br>
--PHP<br>
+- PHP<br>
     ThinkPHP框架<br>
     Laraval框架<br>
     Yii框架<br>
