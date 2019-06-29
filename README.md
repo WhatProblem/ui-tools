@@ -15,6 +15,9 @@
 [[parabola]](https://github.com/WhatProblem/toolsChunk/tree/master/cartParabola)    --购物车抛物线效果（带有动画）<br/>
 [[parabola]](https://github.com/WhatProblem/toolsChunk/tree/master/swiper)    --移动端轮播图<br/>
 
+* ###### 常用js小工具 <br/>
+[[DoDate]](https://github.com/WhatProblem/toolsChunk/tree/master/DoDate)    --无限点击上一天下一天<br/>
+
 -------------------
 * ###### Canvas图标插件类 <br/>
 [[canvas-draw]](https://github.com/WhatProblem/toolsChunk/tree/master/canvas-draw)  --canvas抽奖转盘<br/>

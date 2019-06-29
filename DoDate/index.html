@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>日期操作</title>
+	<style>
+		span {
+			padding: 5px;
+			background: #aaa;
+			cursor: pointer;
+		}
+
+		span:nth-child(2) {
+			cursor: auto;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<span onclick="prevDay()">上一天</span>
+		<span id="myDate">2019-6-28</span>
+		<span onclick="nextDay()">下一天</span>
+	</div>
+</body>
+<script src="./class.js"></script>
+<!-- <script src="./proto.js"></script> -->
+</html>
