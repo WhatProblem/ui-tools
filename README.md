@@ -17,6 +17,7 @@
 
 * ###### 常用js小工具 <br/>
 [[DoDate]](https://github.com/WhatProblem/toolsChunk/tree/master/DoDate)    --无限点击上一天下一天<br/>
+[[Tree]](https://github.com/WhatProblem/toolsChunk/tree/master/tree)    --无限循环树形菜单<br/>
 
 -------------------
 * ###### Canvas图标插件类 <br/>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        :root {
+            --navTitle-color: #666;
+            --navTitle-active-color: #f06;
+            --navTitle-font-size: 16px;
+        }
+        ul, li {
+            list-style: none;
+        }
+        li {
+            height: 28px;
+            line-height: 28px;
+            overflow: hidden;
+            color: #000;
+        }
+        li:hover {
+            color: var(--navTitle-active-color);
+        }
+        li[navTitle] {
+            cursor: pointer;
+            color: var(--navTitle-color);
+            font-size: var(--navTitle-font-size);
+        }
+
+        li[showmenu="show"] {
+            height: auto;
+        }
+
+        li[menuactive="active"] {
+            color: #f06;
+        }
+        #tree {
+            width: 260px;
+        }
+    </style>
+</head>
+<body>
+    <div id="tree">
+        <ul>
+            <li>前端
+                <ul>
+                    <li>javascript
+                        <ul>
+                            <li>ES6进阶</li>
+                            <li>React框架</li>
+                            <li>Vue框架</li>
+                        </ul>
+                    </li>
+                    <li>HTML基础</li>
+                    <li>CSS基础</li>
+                </ul>
+            </li>
+            <li>PHP
+                <ul>
+                    <li>Laraval框架</li>
+                    <li>ThinkPHP框架</li>
+                    <li>Slim3框架</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+<!-- mock数据 -->
+<script src="./mock.js"></script>
+<!-- <script src="./proto.js"></script> -->
+<script src="./clsss.js"></script>
+</html>
