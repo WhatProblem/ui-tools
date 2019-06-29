@@ -28,10 +28,10 @@ event.cancelBubble = true // IE阻止冒泡
     效果如下：
 - 前端<br>
     - javascript<br>
-            - ES6进阶<br>
-            - React框架<br>
-            - Vue框架<br>
-            - Angular框架<br>
+            -   ES6进阶<br>
+            -   React框架<br>
+            -   Vue框架<br>
+            -   Angular框架<br>
     - HTML<br>
             - H5新特性<br>
     - CSS<br>
