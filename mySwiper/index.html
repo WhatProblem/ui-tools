@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播</title>
+    <style>
+        #swiper {
+            width: 600px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #999;
+            margin: auto;
+        }
+
+        .inner {
+            /* width: 2400px; */
+            height: 400px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .img {
+            float: left;
+            width: 600px;
+            height: 400px;
+            font-size: 60px;
+            font-weight: bold;
+            color: #666;
+            text-align: center;
+        }
+
+        .tabs {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+        }
+
+        .tabs span {
+            font-size: 16px;
+            color: #333;
+            border: 1px solid #666;
+            cursor: pointer;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        .activeTab {
+            color: #000;
+            background: #f91;
+        }
+
+        .left,
+        .right {
+            width: 40px;
+            height: 40px;
+            transform: translateY(-50%);
+            font-size: 30px;
+            text-align: center;
+            line-height: 40px;
+            color: #999;
+            font-weight: bold;
+            background: #ddd;
+            cursor: pointer;
+        }
+
+        .left {
+            position: absolute;
+            top: 50%;
+            left: 0;
+        }
+
+        .right {
+            position: absolute;
+            top: 50%;
+            right: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="swiper">
+        <div class="inner">
+            <div class="img">1</div>
+            <div class="img">2</div>
+            <div class="img">3</div>
+            <div class="img">4</div>
+        </div>
+        <div class="tabs">
+            <!-- <span class="activeTab">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span> -->
+        </div>
+        <div class="arrow">
+            <div class="left">&lt;</div>
+            <div class="right">&gt;</div>
+        </div>
+    </div>
+</body>
+<script src="./proto.js"></script>
+</html>
