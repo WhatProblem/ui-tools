@@ -4,9 +4,10 @@ function MySwiper(option) {
 
     this.animateTimer = null
     this.step = 30
-    this.rightBtn.onclick = function () {
-        this.animate(this.bannerList, -600)
-    }.bind(this)
+    this.activeIndex = 0
+    this.autoTimer = null
+    this.autoPlay()
+    this.doEvent()
 }
 
 MySwiper.prototype.init = function (option) {
@@ -24,6 +25,63 @@ MySwiper.prototype.init = function (option) {
     this.bannerList.style.width = this.wid * this.childLen + 'px'
 }
 
+MySwiper.prototype.autoPlay = function () {
+    this.autoTimer = setInterval(() => {
+        if (this.activeIndex >= this.childLen - 1) {
+            this.activeIndex = 0
+            this.bannerList.style.left = 0 + 'px'
+        }
+        this.activeIndex++
+        this.animate(this.bannerList, -this.wid * this.activeIndex)
+        this.ctrlTabs()
+    }, 1000);
+}
+
+MySwiper.prototype.doEvent = function () {
+    let self = this
+    this.rightBtn.onclick = function () {
+        clearInterval(this.animateTimer)
+        if (this.activeIndex >= this.childLen - 1) {
+            this.activeIndex = 0
+            this.bannerList.style.left = 0 + 'px'
+        }
+        this.activeIndex++
+        this.animate(this.bannerList, -this.wid * this.activeIndex)
+        this.ctrlTabs()
+    }.bind(this)
+
+    this.leftBtn.onclick = function () {
+        clearInterval(this.animateTimer)
+        if (this.activeIndex <= 0) {
+            this.bannerList.style.left = -this.wid * (this.childLen - 1) + 'px'
+            this.activeIndex = this.childLen - 1
+        }
+        this.activeIndex--
+        this.animate(this.bannerList, -this.wid * this.activeIndex)
+        this.ctrlTabs()
+    }.bind(this)
+
+    this.el.onmouseover = function () {
+        clearInterval(this.autoTimer)
+        this.autoTimer = null
+    }.bind(this)
+
+    this.el.onmouseout = function () {
+        this.autoPlay()
+    }.bind(this)
+    for (let i = 0, len = this.tabs.children.length; i < len; i++) {
+        this.tabs.children[i].onclick = function () {
+            clearInterval(self.animateTimer)
+            for (let i = 0, len = self.tabs.children.length; i < len; i++) {
+                self.tabs.children[i]['className'] = ''
+            }
+            this.className = 'activeTab'
+            self.activeIndex = this.indexTab
+            self.animate(self.bannerList, -self.wid * self.activeIndex)
+        }
+    }
+}
+
 MySwiper.prototype.generateTabs = function () {
     for (let i = 0, len = this.bannerList.children.length - 1; i < len; i++) {
         let tab = document.createElement('span')
@@ -31,6 +89,20 @@ MySwiper.prototype.generateTabs = function () {
         tab.innerHTML = tab.indexTab + 1
         tab.className = !tab.indexTab ? 'activeTab' : ''
         this.tabs.appendChild(tab)
+    }
+}
+
+MySwiper.prototype.ctrlTabs = function () {
+    for (let i = 0, len = this.tabs.children.length; i < len; i++) {
+        this.tabs.children[i]['className'] = ''
+    }
+    for (let i = 0, len = this.tabs.children.length; i < len; i++) {
+        if (this.activeIndex === this.tabs.children[i]['indexTab']) {
+            this.tabs.children[i]['className'] = 'activeTab'
+        }
+        if (this.activeIndex === this.childLen - 1) {
+            this.tabs.children[0]['className'] = 'activeTab'
+        }
     }
 }
 
