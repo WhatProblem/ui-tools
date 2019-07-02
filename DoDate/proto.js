@@ -1,15 +1,20 @@
 function DoDate(option) {
     this.format = option.format || 'yyyy-mm-dd'
     this.limitNext = option.limitNext || false
+    this.curDate = option.curDate || new Date()
+    this.limitDate = option.limitDate || new Date()
+    this.doType = option.doType || 'day'
+    this.nextPermit = false // 默认下一个可点击
     this.init() // 初始化时间
     this.date = this.dateTime() // 返回时间
 }
 
 DoDate.prototype.init = function () {
-    let date = new Date() // 当前时间
+    let date = new Date(this.curDate) // 当前时间
     this.year = date.getFullYear() // 当前年
     this.month = date.getMonth() + 1 // 当前月
     this.day = date.getDate() // 当前日
+    this.nextPermit = DoDate._greaterToday(this.year, this.month, this.day, this.limitDate)
 }
 
 // yyyy-mm-dd
@@ -31,23 +36,47 @@ DoDate.prototype.dateTime = function () {
 }
 
 DoDate.prototype.prevDay = function () {
-    this.day--
-    this.commonDay()
-    this.date = this.dateTime() // 返回时间
+    if (this.doType === 'day') {
+        this.day--
+        this.commonDay()
+        this.date = this.dateTime() // 返回时间
+    } else if (this.doType === 'month') {
+        this.month--;
+        this.date = this.setMonth();
+    }
 }
 
 DoDate.prototype.nextDay = function () {
-    if (this.limitNext && DoDate._greaterToday(this.year, this.month, this.day)) { // 
-        return
+    if (this.doType === 'day') {
+        if (this.limitNext && DoDate._greaterToday(this.year, this.month, this.day, this.limitDate)) {
+            return true;
+        }
+        this.day++;
+        this.commonDay();
+        this.date = this.dateTime(); // 返回时间
+    } else if (this.doType === 'month') {
+        if (this.limitNext && DoDate._greaterToday(this.year, this.month, 1, this.limitDate)) {
+            return true;
+        }
+        this.month++;
+        this.date = this.setMonth();
     }
-    this.day++
-    this.commonDay()
-    this.date = this.dateTime() // 返回时间
 }
-
+DoDate.prototype.setMonth = function () { // 设置月份
+    if (this.month < 1) {
+        --this.year;
+        this.month = 12;
+    } else if (this.month > 12) {
+        ++this.year;
+        this.month = 1;
+    }
+    let month = this.month.toString().length > 1 ? this.month : `0${this.month}`,
+        year = this.year.toString().length > 1 ? this.year : `0${this.year}`;
+    return `${year}-${month}`;
+}
 // 是否大于当前日期
-DoDate._greaterToday = function (year, month, day) {
-    let current = new Date(),
+DoDate._greaterToday = function (year, month, day = 1, limitDate) {
+    let current = new Date(limitDate),
         curYear = current.getFullYear(),
         curMonth = current.getMonth() + 1,
         currDay = current.getDate(),
@@ -76,7 +105,6 @@ DoDate.prototype.commonDay = function () {
             break;
     }
 }
-
 DoDate.prototype.setDate = function (days) {
     if (this.day > days) {
         this.day = 1
@@ -101,14 +129,17 @@ let date = new DoDate({
     // format: 'yyyy-m-d',
     // format: 'yyyy/mm/dd',
     // format: 'yyyy/m/d',
-    // limitNext: true, // 限制下一天不可选--默认false可选
+    limitNext: true, // 限制下一天不可选--默认false可选
+    // curDate: '2019-07-01', // 当天日期（可选）
+    limitDate: '2019-07', // 限制超过这天不能点击,limitNext选，此项必选
+    doType: 'month', // 默认上一天（可选）
 });
 let myDate = document.getElementById('myDate')
 myDate.innerHTML = date.date
 function prevDay() {
     date.prevDay()
     // date实例包含返回的具体格式日期
-     myDate.innerHTML = date.date
+    myDate.innerHTML = date.date
 }
 function nextDay() {
     date.nextDay()

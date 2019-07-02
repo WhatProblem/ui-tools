@@ -6,11 +6,14 @@
 // 传入对应的时间格式控制-可选默认当前格式
 // 限制下一天不可选--默认false可选
 var date = new DoDate({
-    format: 'yyyy-mm-dd', // 2019-06-29
-    // format: 'yyyy-m-d', // 2019-6-29
-    // format: 'yyyy/mm/dd', // 2019/06/29
-    // format: 'yyyy/m/d', // 2019/6/29
-    // limitNext: true, 
+    format: 'yyyy-mm-dd', // 传入对应的时间格式控制-可选默认当前格式
+    // format: 'yyyy-m-d',
+    // format: 'yyyy/mm/dd',
+    // format: 'yyyy/m/d',
+    limitNext: true, // 限制下一天不可选--默认false可选
+    // curDate: '2019-07-01', // 当天日期（可选）
+    limitDate: '2019-07', // 限制超过这天不能点击,limitNext选，此项必选
+    doType: 'month', // 默认上一天（可选）
 });
 var myDate = document.getElementById('myDate')
 myDate.innerHTML = date.date
