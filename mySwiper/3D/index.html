@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D旋转木马</title>
+    <style>
+        body {
+            background: gray;
+        }
+
+        #slider {
+            width: 800px;
+            height: 400px;
+            background: #fff;
+            margin: auto;
+            position: relative;
+        }
+
+        .img {
+            font-size: 50px;
+            text-align: center;
+            font-weight: bold;
+            width: 500px;
+            height: 260px;
+            position: absolute;
+            /* left: 0;top: 0; */
+        }
+
+        .img:nth-of-type(odd) {
+            background: #999;
+        }
+
+        .img:nth-of-type(even) {
+            background: #ccc;
+        }
+
+        .leftBtn,
+        .rightBtn {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 36px;
+            position: absolute;
+            transform: translateY(-50%);
+            top: 50%;
+            cursor: pointer;
+            z-index: 99;
+            background: rgba(120, 120, 120, 0.75);
+        }
+
+        .leftBtn {
+            left: 0;
+        }
+
+        .rightBtn {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="slider">
+        <div class="inner">
+            <div class="img">1</div>
+            <div class="img">2</div>
+            <div class="img">3</div>
+            <div class="img">4</div>
+            <div class="img">5</div>
+        </div>
+        <div class="arrow">
+            <div class="leftBtn">
+                <</div> <div class="rightBtn">>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- <script src="./proto.js"></script> -->
+<script src="./class.js"></script>
+</html>
