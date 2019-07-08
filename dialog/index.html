@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content1="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content1="ie=edge">
+    <title>dialog对话框</title>
+    <style>
+        /* 第一个弹框 */
+        .dialog1 {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            opacity: 0;
+            background: rgba(94, 110, 141, .9);
+            transition: opacity .3s 0s, visibility 0s .3s;
+        }
+
+        .content1 {
+            width: 400px;
+            height: 172px;
+            background: #fff;
+            margin: auto;
+            transform: translateY(-40px);
+            transition: transform 0.3s 0s;
+        }
+
+        .isActive1 {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity .3s 0s, visibility 0s 0s;
+        }
+
+        .isShow1 {
+            transform: translateY(90px);
+            transition: transform 0.3s 0s;
+        }
+
+        /* 第二个弹框 */
+        .dialog2 {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 100%;
+            visibility: hidden;
+            background: rgba(94, 110, 141, .9);
+            transition: left .3s ease-in-out 0s, visibility 0s .3s;
+        }
+
+        .content2 {
+            width: 400px;
+            height: 172px;
+            background: #fff;
+            margin: auto;
+            transform: translateY(-40px);
+            transition: transform 0.3s 0s;
+        }
+
+        .isActive2 {
+            visibility: visible;
+            left: 0;
+            transition: left .3s ease-in-out 0s, visibility 0s 0s;
+        }
+
+        .isShow2 {
+            transform: translateY(90px);
+            transition: transform 0.3s 0s;
+        }
+
+        /* 第三个 */
+        .dialog3 {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            opacity: 0;
+            background: rgba(94, 110, 141, .9);
+            transition: opacity .3s 0s, visibility 0s .3s;
+        }
+
+        .content3 {
+            width: 0;
+            height: 0;
+            background: #fff;
+            margin: auto;
+            transform: translateY(90px);
+            transition: all 0.3s;
+        }
+
+        .isActive3 {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity .3s 0s, visibility 0s 0s;
+        }
+
+        .isShow3 {
+            width: 400px;
+            height: 172px;
+            transition: all 0.3s;
+        }
+
+        /* 第四个 */
+        .dialog4 {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            opacity: 0;
+            background: rgba(94, 110, 141, .9);
+            transition: opacity .3s 0s, visibility 0s .3s;
+        }
+
+        .content4 {
+            width: 0;
+            height: 0;
+            background: #fff;
+            margin: auto;
+            margin-top: 100px;
+            transform: rotateZ(0);
+            transition: width 0.3s 0s, height 0.3s 0s, transform 0.3s ease-out 0s;
+        }
+
+        .isActive4 {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity .3s 0s, visibility 0s 0s;
+        }
+
+        .isShow4 {
+            width: 400px;
+            height: 172px;
+            transform: rotateZ(360deg);
+            margin-top: 100px;
+            transition: width 0.3s 0s, height 0.3s 0s, transform 0.3s ease-out 0s;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">展示渐变弹框1</button>
+    <div class="dialog1">
+        <div class="content1">
+            <button class="close1">关闭</button>
+        </div>
+    </div>
+
+    <button id="btn2">展示滑动弹框2</button>
+    <div class="dialog2">
+        <div class="content2">
+            <button class="close2">关闭</button>
+        </div>
+    </div>
+
+    <button id="btn3">展示滑动弹框3</button>
+    <div class="dialog3">
+        <div class="content3">
+            <button class="close3">关闭</button>
+        </div>
+    </div>
+
+    <button id="btn4">展示滑动弹框4</button>
+    <div class="dialog4">
+        <div class="content4">
+            <button class="close4">关闭</button>
+        </div>
+    </div>
+</body>
+<script>
+    // 第一个按钮点击效果
+    let btn1 = document.getElementById('btn1');
+    let dialog1 = document.getElementsByClassName('dialog1')[0];
+    let content1 = document.getElementsByClassName('content1')[0];
+    let close1 = document.getElementsByClassName('close1')[0];
+    btn1.onclick = function () {
+        dialog1.classList.add('isActive1')
+        content1.classList.add('isShow1')
+    }
+    close1.onclick = function () {
+        dialog1.classList.remove('isActive1')
+        content1.classList.remove('isShow1')
+    }
+    dialog1.onclick = function () {
+        dialog1.classList.remove('isActive1')
+        content1.classList.remove('isShow1')
+    }
+
+    // 第二个按钮点击效果
+    let btn2 = document.getElementById('btn2');
+    let dialog2 = document.getElementsByClassName('dialog2')[0];
+    let content2 = document.getElementsByClassName('content2')[0];
+    let close2 = document.getElementsByClassName('close2')[0];
+    btn2.onclick = function () {
+        dialog2.classList.add('isActive2')
+        content2.classList.add('isShow2')
+    }
+    close2.onclick = function () {
+        dialog2.classList.remove('isActive2')
+        // content2.classList.remove('isShow2')
+    }
+    dialog2.onclick = function () {
+        dialog2.classList.remove('isActive2')
+        content2.classList.remove('isShow2')
+    }
+    // 第三个按钮点击效果
+    let btn3 = document.getElementById('btn3');
+    let dialog3 = document.getElementsByClassName('dialog3')[0];
+    let content3 = document.getElementsByClassName('content3')[0];
+    let close3 = document.getElementsByClassName('close3')[0];
+    btn3.onclick = function () {
+        dialog3.classList.add('isActive3')
+        content3.classList.add('isShow3')
+    }
+    close3.onclick = function () {
+        dialog3.classList.remove('isActive3')
+        content3.classList.remove('isShow3')
+    }
+    dialog3.onclick = function () {
+        dialog3.classList.remove('isActive3')
+        content3.classList.remove('isShow3')
+    }
+
+    // 第四个按钮点击效果
+    let btn4 = document.getElementById('btn4');
+    let dialog4 = document.getElementsByClassName('dialog4')[0];
+    let content4 = document.getElementsByClassName('content4')[0];
+    let close4 = document.getElementsByClassName('close4')[0];
+    btn4.onclick = function () {
+        dialog4.classList.add('isActive4')
+        content4.classList.add('isShow4')
+    }
+    close4.onclick = function () {
+        dialog4.classList.remove('isActive4')
+        content4.classList.remove('isShow4')
+    }
+    dialog4.onclick = function () {
+        dialog4.classList.remove('isActive4')
+        content4.classList.remove('isShow4')
+    }
+</script>
+</html>
