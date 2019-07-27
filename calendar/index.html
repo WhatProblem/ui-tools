@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>日历</title>
+    <style>
+        .dataTitle {
+            margin-left: 120px;
+        }
+
+        .left,
+        .right {
+            padding: 5px 10px;
+            font-size: 16px;
+            color: rgb(39, 62, 88);
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .detailDate {
+            padding: 5px 10px;
+        }
+
+        #week {
+            font-size: 0;
+        }
+
+        .weekTitle,
+        .dateDetail {
+            display: inline-block;
+            width: 60px;
+            height: 40px;
+            font-size: 16px;
+            line-height: 40px;
+            text-align: center;
+            background: rgba(128, 128, 128, 0.5);
+        }
+
+        .dateDetail {
+            background: none;
+            border: 1px solid rgba(248, 195, 195, .5);
+            box-sizing: border-box;
+        }
+
+        .noActive {
+            background: rgb(245, 245, 235);
+            color: rgba(247, 230, 83, 0.75);
+            cursor: no-drop;
+        }
+
+        .activeTime {
+            background: rgba(247, 230, 83, 0.75);
+            color: rgb(168, 168, 145);
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar">
+        <div class="dataTitle">
+            <span class="left"><</span> 
+            <span class="detailDate"></span>
+            <span class="right">></span>
+        </div>
+        <div id="week"></div>
+        <div class="date"></div>
+    </div>
+</body>
+<script src="./calendar.js"></script>
+</html>
