@@ -7,7 +7,7 @@ class Picker {
 	// 惯性滑动思路:
 	// 在手指离开屏幕时，如果和上一次 move 时的间隔小于 `MOMENTUM_LIMIT_TIME` 且 move
 	// 距离大于 `MOMENTUM_LIMIT_DISTANCE` 时，执行惯性滑动
-	MOMENTUM_LIMIT_TIME = 300;
+	MOMENTUM_LIMIT_TIME = 100;
 	MOMENTUM_LIMIT_DISTANCE = 15;
 	supportsPassive = false;
 

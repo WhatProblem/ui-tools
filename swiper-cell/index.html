@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>swiper-cell</title>
+	<style>
+		.swiper-cell {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			overflow: hidden;
+			cursor: grab;
+		}
+
+		::-webkit-scrollbar {
+			width: 0;
+			background: transparent;
+		}
+
+		.swiper-wrapper-left {
+			position: absolute;
+			left: 0;
+			height: 100%;
+			transform: translate3d(-100%, 0, 0);
+			background: yellowgreen;
+		}
+
+		.swiper-cell-right {
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 100%;
+			transform: translate3d(100%, 0, 0);
+			background: yellowgreen;
+		}
+
+		.swiper-wrapper-content {
+			position: relative;
+			display: flex;
+			box-sizing: border-box;
+			width: 100%;
+			padding: 10px 16px;
+			overflow: hidden;
+			color: #323233;
+			font-size: 14px;
+			line-height: 24px;
+			background-color: #aaa;
+		}
+
+		.test-content {
+			width: 60px;
+			height: 100%;
+			line-height: 44px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="swiper-cell">
+		<div class="swiper-wrapper">
+			<div class="swiper-wrapper-left">
+				<div class="test-content">选择</div>
+			</div>
+			<div class="swiper-wrapper-content">
+				中间内容区域
+			</div>
+			<div class="swiper-cell-right">
+				<div class="test-content">删除</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="./index.js"></script>
+
+</html>
